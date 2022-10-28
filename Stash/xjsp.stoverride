@@ -1,0 +1,22 @@
+name: 香蕉视频
+desc: 解锁部分观看限制
+
+http:
+  mitm:
+    - "ios.fuliapps.com"
+    - "apple.fuliapps.com"
+    - "ios.xiangjiaoapps.com"
+    - "apple.xiangjiaoapps.com"
+    - "*.xiangxiangapps.com"
+    - "*.pipiapps.com"
+  script:
+    - match: ^https?:\/\/.+?\.(pipi|fuli|xiang(jiao|xiang))apps\.com\/(ucp\/index|getGlobalData|(\/|)vod\/reqplay\/)
+      name: xjsp
+      type: response
+      require-body: true
+      timeout: 10
+
+script-providers:
+  xjsp:
+    url: https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/xjsp.js
+    interval: 86400
